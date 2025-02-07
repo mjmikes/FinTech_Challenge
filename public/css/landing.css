@@ -40,10 +40,11 @@ header nav ul li a {
     background-image: url('/images/pnc_background.jpeg');
     background-size: cover;
     background-position: center;
-    padding: 250px 20px;
-    display: flex;
+    padding: 200px 100px;
+    display: absolute;
     align-items: center;
     justify-content: space-around;
+    min-height: 400px
 }
 
 .hero-content {
@@ -52,9 +53,32 @@ header nav ul li a {
     align-items: center;
 }
 
-.hero-image img {
-    width: 40%; /* Adjust based on the size of the phone image */
+.hero-image {
+    position: relative; /* Maintain relative positioning */
+    width: 40%; /* Control the overall size of the container */
+    max-width: 300px; /* Set a maximum width to keep it responsive */
+    align-self: center; /* Center the phone within the hero section vertically */
+    margin-left: 20%; /* Add space from the left */
+    margin-top: 50px; /* Adjust vertical spacing as necessary */
 }
+
+.phone-frame {
+    width: 100%; /* Make the phone frame fill the container */
+    display: block; /* Remove bottom space/gap */
+    transform: scale(2.5); /* Scale the image up by 2.5 times */
+    transform-origin: top center; /* Ensure the scaling centers from the top middle */
+    margin-top: -220px; /* Adjust vertical spacing as necessary */
+}
+
+.phone-screen-content {
+    position: absolute; /* Absolute positioning to place it over the phone frame */
+    top: 15%; /* Adjust the top position to align with the phone screen's top edge */
+    left: 10%; /* Adjust the left position to align with the phone screen's left edge */
+    width: 80%; /* Adjust the width to fit the screen area */
+    height: 70%; /* Adjust the height to fit the screen area */
+    object-fit: cover; /* Cover the area without distorting the aspect ratio */
+}
+
 
 .hero-text {
     width: 60%;
