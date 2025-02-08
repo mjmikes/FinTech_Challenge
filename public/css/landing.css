@@ -8,15 +8,16 @@ body {
 }
 
 header {
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;  
+    padding: 0px 10px;
     background-color: #414E58;
     color: white;
-    padding: 0px 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 120px; /* Fixed height to prevent resizing */
-    overflow: hidden; /* Prevents contents from making the header expand */
+    height: 120px;
+    overflow: visible;  
 }
+
 
 .logo {
     flex-shrink: 0; /* Prevents the logo from resizing due to flex container constraints */
@@ -32,16 +33,19 @@ header {
 }
 
 header nav ul {
+    display: flex;
     list-style: none;
     padding: 0;
 }
 
 header nav ul li {
+    display: flex;
     display: inline;
     margin-right: 20px;
 }
 
 header nav ul li a {
+    display: flex;
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -55,19 +59,38 @@ header nav ul li a {
     background-color: #0069AA; /* Background color */
     border-radius: 5px; /* Rounded corners */
     transition: background-color 0.3s; /* Smooth transition for hover effect */
+    z-index: 10;
+    transition: transform 0.3s ease, background-color 0.3s ease;  /* Smooth transition for transform and background color */
 }
+
+.button:hover {
+    transform: scale(1.05);  /* Slightly enlarges the button */
+}
+
+.button:active {
+    background-color: #333;  /* Darker shade for the click effect */
+}
+
 
 .big-button {
     padding: 15px 50px; /* Larger padding for a bigger button */
     font-size: 1.25em; /* Larger font size for better visibility */
     font-weight: bold; /* Make the text bold */
     background-color: #0069AA; /* Standout color for the main action button */
+    pointer-events: auto; /* Ensure the button is clickable */
+    z-index: 10;
+    transition: transform 0.3s ease, background-color 0.3s ease;  /* Smooth transition for transform and background color */
 }
 
+
 .big-button:hover {
-    background-color: #FFA500; /* A different hover color to attract attention */
-    color: #333; /* Change text color on hover for contrast */
+    transform: scale(1.05);  /* Slightly enlarges the button */
 }
+
+.big-button:active {
+    background-color: #333;  /* Darker shade for the click effect */
+}
+
 
 
 .hero-overlay {
@@ -76,7 +99,7 @@ header nav ul li a {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent black */
     z-index: 1; /* Ensure it sits above the background but below the text */
 }
 
@@ -97,7 +120,7 @@ header nav ul li a {
     display: flex;
     width: 100%;
     align-items: center;
-    z-index: 2; /* Higher z-index to make sure content appears above the overlay */
+    z-index: 5; /* Higher z-index to make sure content appears above the overlay */
 }
 
 
@@ -114,7 +137,9 @@ header nav ul li a {
     transform: scale(2.5); /* Scale the image up by 2.5 times */
     transform-origin: top center; /* Ensure the scaling centers from the top middle */
     margin-top: -400px; /* Adjust vertical position */
-    margin-left: 750px; /* Adjust horizontal position */
+    margin-left: 700px; /* Adjust horizontal position */
+    z-index: -1;
+    pointer-events: none;
 }
 
 .phone-screen-content {

@@ -26,6 +26,12 @@ app.get('/', (req, res) => {
 // Set a static folder for serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Define a route for the Loan Application page
+app.get('/application', (req, res) => {
+    res.render('application', { title: 'Loan Application', message: 'Start Your Loan Application' });
+});
+
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
