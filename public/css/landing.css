@@ -10,14 +10,25 @@ body {
 header {
     background-color: #414E58;
     color: white;
-    padding: 20px;
+    padding: 0px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 120px; /* Fixed height to prevent resizing */
+    overflow: hidden; /* Prevents contents from making the header expand */
 }
 
-header .logo img {
-    height: 60px;
+.logo {
+    flex-shrink: 0; /* Prevents the logo from resizing due to flex container constraints */
+    height: 100%; /* Sets logo container to full height of the header */
+    display: flex;
+    align-items: center; /* Centers the logo vertically */
+}
+
+.logo img {
+    height: 300px; /* Adjusts height automatically */
+    width: auto; /* Adjusts width to maintain aspect ratio */
+    margin-top: 40px;
 }
 
 header nav ul {
@@ -36,7 +47,41 @@ header nav ul li a {
     font-weight: bold;
 }
 
+.button {
+    display: inline-block;
+    padding: 8px 16px; /* Original padding */
+    text-decoration: none; /* Remove underline */
+    color: white; /* Text color */
+    background-color: #0069AA; /* Background color */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.big-button {
+    padding: 15px 50px; /* Larger padding for a bigger button */
+    font-size: 1.25em; /* Larger font size for better visibility */
+    font-weight: bold; /* Make the text bold */
+    background-color: #0069AA; /* Standout color for the main action button */
+}
+
+.big-button:hover {
+    background-color: #FFA500; /* A different hover color to attract attention */
+    color: #333; /* Change text color on hover for contrast */
+}
+
+
+.hero-overlay {
+    position: absolute; /* Position it relative to .hero */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 1; /* Ensure it sits above the background but below the text */
+}
+
 .hero {
+    position: relative; /* Needed to contain the absolutely positioned overlay */
     background-image: url('/images/pnc_background.jpeg');
     background-size: cover;
     background-position: center;
@@ -44,14 +89,17 @@ header nav ul li a {
     align-items: center;
     justify-content: space-between;
     padding: 200px 100px;
-    min-height: 400px;
+    min-height: 350px;
 }
 
 .hero-content {
+    position: relative; /* Ensures content is positioned above the overlay */
     display: flex;
     width: 100%;
     align-items: center;
+    z-index: 2; /* Higher z-index to make sure content appears above the overlay */
 }
+
 
 .hero-image {
     flex: 1; /* Allows it to grow */
@@ -61,33 +109,38 @@ header nav ul li a {
 }
 
 .phone-frame {
-    width: 100%; /* Make the phone frame fill the container */
-    display: block; /* Remove bottom space/gap */
+    width: 300%; /* Ensure the phone frame fills its container */
+    display: block; /* Remove any bottom space/gap */
     transform: scale(2.5); /* Scale the image up by 2.5 times */
     transform-origin: top center; /* Ensure the scaling centers from the top middle */
-    margin-top: -250px;
-    margin-left: 250px;
+    margin-top: -400px; /* Adjust vertical position */
+    margin-left: 750px; /* Adjust horizontal position */
 }
 
 .phone-screen-content {
-    position: absolute; /* Absolute positioning to place it over the phone frame */
-    top: 15%; /* Adjust the top position to align with the phone screen's top edge */
-    left: 10%; /* Adjust the left position to align with the phone screen's left edge */
-    width: 80%; /* Adjust the width to fit the screen area */
-    height: 70%; /* Adjust the height to fit the screen area */
-    object-fit: cover; /* Cover the area without distorting the aspect ratio */
+    position: absolute; /* Absolute positioning to overlay on the phone frame */
+    margin-top: -290px; /* Adjust vertical position */
+    margin-left: 20px; /* Adjust horizontal position */
+    object-fit: cover; /* Ensures the content covers the area without distortion */
 }
+
 
 .hero-text {
     flex: 3; /* Takes more space */
     color: white;
     padding: 20px; /* Adds some internal spacing */
-    text-align: right; /* Aligns text to the right */
-    margin-right: 200px;
+    text-align: left; /* Aligns text to the right */
+    margin-left: -150px;
 }
 
 .hero-text h1 {
     margin-top: 0;
+    font-size: 60px;
+}
+
+.hero-text h2 {
+    margin-top: 0;
+    font-size: 40px;
 }
 
 .hero-text p {
