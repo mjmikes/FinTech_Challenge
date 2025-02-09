@@ -31,6 +31,15 @@ app.get('/application', (req, res) => {
     res.render('application', { title: 'Loan Application', message: 'Start Your Loan Application' });
 });
 
+// Route for the loading screen
+app.get('/loading', (req, res) => {
+    res.render('loading', { title: 'Loading...' });  // Assumes you have a 'loading.ejs' in your views directory
+});
+
+// Define a route for the ReliaRating page
+app.get('/reliarating', (req, res) => {
+    res.render('reliarating', { title: 'Your ReliaRating', message: 'Here is your ReliaRating!' });
+});
 
 // Start the server
 app.listen(PORT, () => {

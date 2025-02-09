@@ -1,0 +1,125 @@
+/* loading.css */
+header {
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;  
+    padding: 0px 10px;
+    background-color: #414E58;
+    color: white;
+    height: 120px;
+    overflow: visible;  
+}
+
+
+.logo {
+    flex-shrink: 0; /* Prevents the logo from resizing due to flex container constraints */
+    height: 100%; /* Sets logo container to full height of the header */
+    display: flex;
+    align-items: center; /* Centers the logo vertically */
+}
+
+.logo img {
+    height: 300px; /* Adjusts height automatically */
+    width: auto; /* Adjusts width to maintain aspect ratio */
+    margin-top: 40px;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: flex;
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    display: flex;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px; /* Original padding */
+    text-decoration: none; /* Remove underline */
+    color: white; /* Text color */
+    background-color: #0069AA; /* Background color */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    z-index: 10;
+    transition: transform 0.3s ease, background-color 0.3s ease;  /* Smooth transition for transform and background color */
+}
+
+.button:hover {
+    transform: scale(1.05);  /* Slightly enlarges the button */
+}
+
+.button:active {
+    background-color: #333;  /* Darker shade for the click effect */
+}
+
+/* loading.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    background-image: url('/images/pnc_background.jpeg'); /* Ensure the path is correct */
+    background-size: cover; /* Cover the entire screen without distorting the aspect ratio */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background from repeating */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white; /* White text for better contrast */
+    overflow: hidden; /* Hides any overflow from the body */
+}
+
+
+.loader-container {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Slight white overlay for visibility */
+    border-radius: 10px; /* Rounded corners for the loader container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.loader {
+    position: relative;
+    border: 8px solid rgba(255, 255, 255, 0.3); /* Lighter/transparent white for the loader background */
+    border-top: 8px solid #ffffff; /* Solid white for the loader itself */
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+}
+
+.loader:before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border: 8px solid transparent;
+    border-top-color: #ffd700; /* A contrasting color */
+    border-radius: 50%;
+    animation: spin 3s linear infinite reverse;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+p {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Enhances readability over varied backgrounds */
+}
+
