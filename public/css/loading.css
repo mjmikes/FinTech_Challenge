@@ -77,6 +77,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white; /* White text for better contrast */
     overflow: hidden; /* Hides any overflow from the body */
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 
@@ -120,6 +121,5 @@ p {
     margin-top: 15px;
     font-size: 18px;
     font-weight: 400;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Enhances readability over varied backgrounds */
 }
 

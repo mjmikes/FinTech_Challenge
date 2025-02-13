@@ -1,0 +1,260 @@
+/* landing.css */
+body {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    margin: 0;
+    padding: 0px;
+    color: #333;
+    background-image: url('/images/pnc_background.jpeg'); /* Path to your image in the images folder */
+    background-size: cover; /* Makes sure the image covers the entire screen */
+    background-position: center center; /* Centers the image in the viewport */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+    background-repeat: no-repeat; /* Prevents repeating the image */
+}
+
+.name-fields {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+    gap: 20px; /* Adjusts spacing between each field */
+    justify-content: center;
+    max-width: 600px; /* Ensures the form doesn't stretch too much */
+    margin: 0 auto; /* Centers the grid */
+}
+
+.name-group {
+    display: flex;
+    flex-direction: column; /* Stacks label above input */
+    text-align: center;
+}
+
+.name-group label {
+    font-weight: 150;
+    margin-bottom: 5px; /* Adds spacing between label and input */
+}
+
+.name-group input {
+    width: 150px; /* Adjust input width */
+    padding: 5px;
+    text-align: center;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;  
+    padding: 0px 10px;
+    background-color: #333;
+    color: white;
+    height: 120px;
+    width: 100%;
+    overflow: visible;  
+    margin-bottom: 50px;
+}
+
+
+.logo {
+    flex-shrink: 0; /* Prevents the logo from resizing due to flex container constraints */
+    height: 100%; /* Sets logo container to full height of the header */
+    display: flex;
+    align-items: center; /* Centers the logo vertically */
+}
+
+.logo img {
+    height: 300px; /* Adjusts height automatically */
+    width: auto; /* Adjusts width to maintain aspect ratio */
+    margin-top: 40px;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: flex;
+    display: inline;
+    margin-right: 80px;
+}
+
+header nav ul li a {
+    display: flex;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.button {
+    display: inline-block;
+    padding: 8px 16px; /* Original padding */
+    text-decoration: none; /* Remove underline */
+    color: white; /* Text color */
+    background-color: #0056b3; /* Background color */
+    border-radius: 5px; /* Rounded corners */
+    font-weight: 80;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    z-index: 10;
+    transition: transform 0.3s ease, background-color 0.3s ease;  /* Smooth transition for transform and background color */
+}
+
+.button:hover {
+    transform: scale(1.05);  /* Slightly enlarges the button */
+}
+
+.button:active {
+    background-color: #333;  /* Darker shade for the click effect */
+}
+
+
+ /* Form Container */
+.form-container {
+    max-width: 900px;
+    width: 100%; /* Ensure it uses full width up to the max */
+    padding: 30px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Centers the form container horizontally */
+}
+
+  .form-container h2 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 20px;
+  }
+
+  /* Input/Label Styling */
+  .form-container label {
+      display: block;
+      margin: 12px 0 5px;
+      font-weight: bold;
+      color: #555;
+  }
+
+  .form-container input, 
+  .form-container textarea, 
+  .form-container select {
+      width: 97%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+  }
+
+  .form-container textarea {
+      height: 150px;
+      resize: vertical;
+  }
+
+  .form-container select {
+      padding: 12px 10px;
+  }
+
+  /* Button Styling */
+.form-container button {
+    background-color: #0056b3;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+    background-color: #0056b3;
+}
+
+/*Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    padding: 0 10%;
+}
+
+.footer-section {
+    margin: 10px;
+}
+
+.footer-section h3 {
+    color: #FFA500; /* PNC Orange */
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: #FFF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #FFA500;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-links img {
+    width: 25px;
+    height: 25px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 10px;
+}
+
+/*Uber & Doordash buttons*/
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+}
+
+.button-wrapper {
+    text-align: center;
+}
+
+.image-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.image-button img {
+    width: 150px; /* Adjust as needed */
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.image-button img:hover {
+    transform: scale(1.1);
+}
