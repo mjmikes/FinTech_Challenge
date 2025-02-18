@@ -74,7 +74,7 @@ body {
     background-size: cover; /* Cover the entire screen without distorting the aspect ratio */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent the background from repeating */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
     color: white; /* White text for better contrast */
     overflow: hidden; /* Hides any overflow from the body */
     font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
