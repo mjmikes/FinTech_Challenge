@@ -36,6 +36,11 @@ app.get('/loading', (req, res) => {
     res.render('loading', { title: 'Loading...' });  // Assumes you have a 'loading.ejs' in your views directory
 });
 
+// Route for the form page
+app.get('/form', (req, res) => {
+    res.render('form', { title: 'Information form' });  // Assumes you have a 'form.ejs' in your views directory
+});
+
 // Define a route for the ReliaRating page
 app.get('/reliarating', (req, res) => {
     res.render('reliarating', { title: 'Your ReliaRating', message: 'Here is your ReliaRating!' });
