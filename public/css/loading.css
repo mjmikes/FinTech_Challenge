@@ -123,3 +123,56 @@ p {
     font-weight: 400;
 }
 
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.loader-container {
+    position: relative; /* Allow absolute positioning of child elements inside */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; /* Make the background fully transparent */
+    width: 500px; /* Set a fixed width */
+    padding-top: 0px; /* Optional: Adds some space above the bar for better visual appearance */
+}
+
+#loading-label {
+    position: absolute; /* This makes the label sit on top of the container */
+    top: -50px; /* Align to the top of the loader container */
+    font-size: 32px; /* Increase font size for labels */
+    font-weight: 600;
+    color: white;
+    margin: 0; /* Remove margin since we are positioning absolutely */
+}
+
+.loading-bar-container {
+    width: 100%; /* Ensure the loading bar takes up the full width of the container */
+    height: 50px; /* Increase the height of the bar */
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    margin-top: 20px; /* Space between label and loading bar */
+}
+
+.loading-bar {
+    width: 0;
+    height: 100%;
+    background-color: #0069AA; /* Set the color of the loading bar */
+    border-radius: 15px;
+    transition: width 0.5s ease-out;
+}
+
+p {
+    font-size: 16px;
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+}

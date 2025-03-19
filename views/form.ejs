@@ -6,133 +6,371 @@
     <title>ReliaRate</title>
     <link rel="stylesheet" href="css/form.css">
 </head>
-
-
 <body>
-
     <header>
         <div class="logo">
             <a href="/"><img src="images/reliarate-canva_processed.png" alt="ReliaRate Logo"> </a>
         </div>
-        
-        <nav>
-            <ul>
-                <li style="font-size: large;">Hi, Immanuel</li>
-            </ul>
-        </nav>
-    </header>   
+        <nav style="display: flex; justify-content: space-between; align-items: center;">
+    <ul style="margin: -60px;">
+        <li style="font-size: large;">Immanuel</li>
+    </ul>
+    <img src="images/profile-icon.png" alt="Profile Icon" style="width: 60px; height: 60px; border-radius: 50%;margin-right: 80px;">
+</nav>
 
-<div class="form-container">
-    <h2 style="font-size: 60px; font-weight: 150; text-align: center;">Check Your ReliaRate Today!</h2>
+    </header>
+
+    <div class="form-container">
+    <h2 style="font-family:'Roboto', sans-serif; font-size: 60px; font-weight: 400; text-align: center;">Check Your ReliaRate Today!</h2>
+
     <br>
     <form>
-        <button type="button" 
-        style="background-color: #0056b3; color: white; padding: 10px 15px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; display: block; margin: 0 auto 20px; text-align: center;">
-                Autofill Personal Information
+        <!-- Autofill Button -->
+        <button type="button" onclick="autofillInfo()" style="background-color: #0056b3; color: white; padding: 10px 15px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; display: block; margin: 0 auto 20px; text-align: center;">
+            Autofill Personal Information
         </button>
-        <p style="margin-left: 200px; margin-right: 200px; color: gray; font-size: x-small; text-align: center;">Choosing to autofill information will automatically take address and personal demographic information saved in your profile settings.</p>
-
+        <p style="margin-left: 200px; margin-right: 200px; color: gray; font-size: x-small; text-align: center;">
+            Choosing to autofill information will automatically take address and personal demographic information saved in your profile settings.
+        </p>
         <br>
 
-        <label for="name" style="font-weight: 150;">Full Name (Last, Middle, First):</label>
-        <input type="text" id="name" name="name">
+        <div class="personal-info">
+            <div class="column">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName">
 
-        <label for="fileUpload" style="font-weight: 150;">Upload Bank Statement(s):</label>
-        <p style="color: gray; font-size: x-small; text-align: left;">Bank statements will be used to calculate savings ratio</p>
-        <input type="file" id="fileUpload" name="fileUpload">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
 
-        <label for="transactions" style="font-weight: 150;">Number of Transactions (last 12 months):</label>
-        <input type="number" id="transactions" name="transactions">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address">
 
-        <div style="display: flex; justify-content: center; gap: 20px; align-items: center; background-color: white; padding: 20px;">
-            <div style="text-align: center;">
-                <label for="button1" style="font-weight: 150; display: block; text-align: center; margin-bottom: 5px;">Authenticate with Doordash</label>
-                <button id="button1" style="background: none; border: none; cursor: pointer; padding: 0;" onclick="event.preventDefault(); authenticate('doordash')">
-                    <img src="images/doordash.png" alt="Authenticate with Doordash" style="width: 180px; height: 50px; object-fit: contain; border-radius: 5px;">
-                </button>
-                <div id="doordash-status" style="margin-top: 10px; font-weight: 150;"></div>
             </div>
-        
-            <div style="text-align: center;">
-                <label for="button2" style="font-weight: 150; display: block; text-align: center; margin-bottom: 5px;">Authenticate with Uber</label>
-                <button id="button2" style="background: none; border: none; cursor: pointer; padding: 0;" onclick="event.preventDefault();authenticate('uber')">
-                    <img src="images/png.png" alt="Authenticate with Uber" style="width: 180px; height: 50px; object-fit: contain; border-radius: 5px;">
-                </button>
-                <div id="uber-status" style="margin-top: 10px; font-weight: 150;"></div>
+            <div class="column">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName">
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone">
             </div>
-        </div> 
+        </div>
 
-        <label for="subscription" style="font-weight: 150;">Please list all subscriptions (last 12 months): </label>
-        <input type="text" id="subscription" name="subscription">
+            <div class="selections-container">
+    <!-- Platform Selection Column -->
+    <div class="selection-column">
+        <label for="platform-choice">Select Your Platform:</label>
+        <select id="platform-choice" onchange="handlePlatformSelection(this.value)">
+            <option value="">Choose Platform</option>
+            <option value="door_dash">Door Dash</option>
+            <option value="fiverr">Fiverr</option>
+            <option value="uber">Uber</option>
+            <option value="uber_eats">Uber Eats</option>
+            <option value="upwork">Upwork</option>
+        </select>
 
-        <div style="margin-top: 20px; text-align: left;">
-            <label style="font-weight: 150; display: block; margin-bottom: 10px;">Do you participate in any of the following risk prone behaviors?</label>
-            
-            <div style="display: flex; gap: 15px;">
-                <!-- <label>
-                    <input type="checkbox" name="service" value="doordash"> Gambling
-                </label> -->
-                <label>
-                    <input type="checkbox" name="service" value="uber"> Smoking
-                </label>
-                <!-- <label>
-                    <input type="checkbox" name="service" value="lyft"> Excessive Alcoholism
-                </label> -->
+        <!-- Div for Platform Login Form -->
+        <!-- Div for Platform Login Form and Loading Indicators -->
+        <div id="platform-auth-container">
+            <img id="platform-logo" src="" alt="Platform Logo" style="display: none; max-width: 100px;">
+            <div id="platform-loading" style="display: none;">
+                <img src="images/doordash.png" alt="Loading">
             </div>
-        </div>        
-
-        <label for="additional" style="font-weight: 150;">Any Additional Information (optional): </label>
-        <input type="text" id="additional" name="additional">
-
-        <br>
-
-        <a href="/loading">
-            <button type="button" style="background-color: #0056b3; color: white; padding: 10px 15px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; display: block; margin: 0 auto 20px; text-align: center;">
-                Get Your ReliaRate
-            </button>
-        </a>        
-
-    </form>
+            <div id="platform-login-form" style="display: none;"></div>
+            <!-- Spinner (Initially hidden) -->
+    <div id="platform-login-loading" style="display: none;">
+        <div class="spinner"></div> <!-- CSS Spinner -->
+    </div>
+    <div id="platform-login-status" style="display: none; display: flex; justify-content: center; align-items: center; gap: 10px;">
+    <img id="platform-service-icon" src="" alt="Platform Icon" style="display: none; width: 20%; align-self: center; height: auto; margin-right: -10px;">
+    <img id="platform-check-icon" src="images/check-icon.png" alt="Success" style="width: 10%; height: auto; display: none;">
 </div>
-</body>
 
-
-
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>Contact Us</h3>
-            <p>Email: info@reliarate.com</p>
-            <p>Phone: (801) 455-6086</p>
         </div>
-        <div class="footer-section">
-            <h3>Follow Us</h3>
-            <div class="social-links">
-                <a href="#"><img src="images/facebook-icon.png" alt="Facebook"></a>
-                <a href="#"><img src="images/instagram-icon.png" alt="Twitter"></a>
-                <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+    </div>
+
+    <!-- Bank Selection Column -->
+    <div class="selection-column">
+        <label for="bank-choice">Select Your Bank:</label>
+        <select id="bank-choice" onchange="handleBankSelection(this.value)">
+            <option value="">Select Bank</option>
+            <option value="ally">Ally Bank</option>
+            <option value="bankofamerica">Bank of America</option>
+            <option value="bbt">BB&T</option>
+            <option value="bmo">BMO Harris Bank</option>
+            <option value="capitalone">Capital One</option>
+            <option value="chase">Chase</option>
+            <option value="citibank">Citibank</option>
+            <option value="citizens">Citizens Bank</option>
+            <option value="fifththird">Fifth Third Bank</option>
+            <option value="goldmansachs">Goldman Sachs</option>
+            <option value="hsbc">HSBC</option>
+            <option value="huntington">Huntington Bank</option>
+            <option value="keybank">KeyBank</option>
+            <option value="mufg">MUFG Union Bank</option>
+            <option value="morganstanley">Morgan Stanley Bank</option>
+            <option value="pnc">PNC Bank</option>
+            <option value="regions">Regions Bank</option>
+            <option value="santander">Santander Bank</option>
+            <option value="schwab">Charles Schwab</option>
+            <option value="sofi">SoFi Bank</option>
+            <option value="suntrust">SunTrust</option>
+            <option value="synchrony">Synchrony Bank</option>
+            <option value="tdbank">TD Bank</option>
+            <option value="usbank">U.S. Bank</option>
+            <option value="wellsfargo">Wells Fargo</option>
+
+        </select>
+
+        <div id="bank-auth-container">
+            <img id="bank-logo" src="" alt="Bank Logo" style="display: none; max-width: 100px;">
+            <div id="bank-loading" style="display: none;">
+                <img src="images/chase.png" alt="Loading">
             </div>
+            <div id="bank-login-form" style="display: none;"></div>
+            <!-- Spinner (Initially hidden) -->
+    <div id="bank-login-loading" style="display: none;">
+        <div class="spinner"></div> <!-- CSS Spinner -->
+    </div>
+    <div id="bank-login-status" style="display: none; display: flex; justify-content: center; align-items: center; gap: 10px;">
+    <img id="bank-service-icon" src="" alt="Bank Icon" style="display: none; margin-top: -15px; width: 20%; height: auto; margin-right: -10px;">
+    <img id="bank-check-icon" src="images/check-icon.png" alt="Success" style="margin-top: -15px;width: 10%; height: auto; display: none;">
+</div>
+
+            
         </div>
     </div>
-    <div class="footer-bottom">
-        <p>© 2025 ReliaRate, Inc. | A Partner of PNC Bank</p>
-    </div>
-</footer>
+</div>
 
-<script>
-    function authenticate(service) {
-        let statusDiv = document.getElementById(service + "-status");
-        statusDiv.innerHTML = '<span style="display: inline-block; width: 16px; height: 16px; border: 2px solid #0056b3; border-top: 2px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></span> Connecting...';
-        
-        setTimeout(() => {
-            statusDiv.innerHTML = `Immanuel's ${service.charAt(0).toUpperCase() + service.slice(1)} information has successfully connected`;
-        }, 2000);
-    }
-</script>
+
+            <label for="subscription_input" style="font-weight: 150;">Please list all subscriptions (select from the list below):</label>
+            <input type="text" id="subscription_input" name="subscription_input" placeholder="Selected subscriptions..." readonly style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+
+            <select id="subscription_select" style="width: 100%; height: 150px; padding: 5px; border: 1px solid #ccc; border-radius: 4px;" size="5">
+                <option value="adobe_creative_cloud">Adobe Creative Cloud</option>
+                <option value="amazon_prime">Amazon Prime</option>
+                <option value="apple_music">Apple Music</option>
+                <option value="apple_tv">Apple TV+</option>
+                <option value="audible">Audible</option>
+                <option value="curiosity_stream">Curiosity Stream</option>
+                <option value="discovery_plus">Discovery+</option>
+                <option value="disney_plus">Disney+</option>
+                <option value="espn_plus">ESPN+</option>
+                <option value="google_one">Google One</option>
+                <option value="grammarly">Grammarly</option>
+                <option value="hbo_max">HBO Max</option>
+                <option value="hulu">Hulu</option>
+                <option value="icloud">iCloud</option>
+                <option value="kindle_unlimited">Kindle Unlimited</option>
+                <option value="linkedin_premium">LinkedIn Premium</option>
+                <option value="masterclass">MasterClass</option>
+                <option value="microsoft_365">Microsoft 365</option>
+                <option value="netflix">Netflix</option>
+                <option value="nordvpn">NordVPN</option>
+                <option value="nytimes">NYTimes</option>
+                <option value="pandora">Pandora</option>
+                <option value="paramount_plus">Paramount+</option>
+                <option value="peloton">Peloton</option>
+                <option value="playstation_plus">PlayStation Plus</option>
+                <option value="siriusxm">SiriusXM</option>
+                <option value="skillshare">Skillshare</option>
+                <option value="soundcloud">SoundCloud</option>
+                <option value="spotify">Spotify</option>
+                <option value="starz">Starz</option>
+                <option value="tidal">Tidal</option>
+                <option value="twitch">Twitch</option>
+                <option value="vimeo_pro">Vimeo Pro</option>
+                <option value="vrv">VRV</option>
+                <option value="washington_post">Washington Post</option>
+                <option value="wwe_network">WWE Network</option>
+                <option value="xbox_live">Xbox Live</option>
+                <option value="youtube_premium">YouTube Premium</option>
+                <option value="zoom">Zoom</option>
+            </select>
+
+            <p style="color: gray; font-size: x-small; text-align: center;">
+                Double-click an item to add it to your list.
+            </p>     
+            
+            <div class="form-row" style="display: flex; justify-content: space-between; gap: 20px;">
+    <!-- Loan Amount Input -->
+    <div class="form-group" style="flex: 1;">
+        <label for="loanAmount" style="font-weight: bold;">Loan Amount($):</label>
+        <input type="number" id="loanAmount" name="loanAmount" placeholder="Enter loan amount" required style="width: 90%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;">
+    </div>
+
+    <!-- Loan Term Selection -->
+    <div class="form-group" style="flex: 1;">
+        <label for="loanTerm" style="font-weight: bold;">Select Loan Term:</label>
+        <select id="loanTerm" name="loanTerm" required style="width: 90%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;">
+            <option value="">Select Term</option>
+            <option value="2">2 Years</option>
+            <option value="3">3 Years</option>
+            <option value="4">4 Years</option>
+            <option value="5">5 Years</option>
+            <option value="6">6 Years</option>
+            <option value="7">7 Years</option>
+        </select>
+    </div>
+</div>
+
+            <br>
+
+            <a href="/loading" style="text-decoration: none;">
+    <button type="button" style="background-color: #0056b3; color: white; padding: 10px 15px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; display: block; margin: 0 auto 20px; text-align: center; transition: background-color 0.3s ease;">
+        Get Your ReliaRate
+    </button>
+</a>
 
 <style>
-    @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+    button:hover {
+        background-color: #004080; /* Darker shade for hover effect */
+        transform: scale(1.05); /* Slightly enlarge the button */
     }
 </style>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@reliarate.com</p>
+                <p>Phone: (801) 455-6086</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                    <a href="#"><img src="images/instagram-icon.png" alt="Instagram"></a>
+                    <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ReliaRate, Inc. | A Partner of PNC Bank</p>
+        </div>
+    </footer>
+
+    <script>
+document.getElementById('platform-choice').addEventListener('change', function() {
+    if (this.value === 'door_dash') {
+        displayPlatformLoading('DoorDash');
+    }
+    // Additional conditions for other platforms can be added here
+});
+
+document.getElementById('bank-choice').addEventListener('change', function() {
+    if (this.value === 'chase') {
+        displayBankLoading('Chase');
+    }
+    // Additional conditions for other banks can be added here
+});
+
+function displayPlatformLoading(service) {
+    // Show platform logo and loading animation
+    document.getElementById('platform-loading').style.display = 'block';  // Show loading
+    document.getElementById('platform-auth-container').style.display = 'block'; // Ensure the container is visible
+    document.getElementById('platform-loading').classList.add('flash'); // Start flashing logo
+
+    setTimeout(() => {
+        document.getElementById('platform-loading').style.display = 'none';  // Hide loading animation
+        document.getElementById('platform-logo').classList.remove('flash'); // Stop flashing logo
+        displayLoginForm('platform', service); // Display login form after loading
+    }, 3000);  // Delay for 2 seconds (simulate loading)
+}
+
+function displayBankLoading(service) {
+    // Show bank logo and loading animation
+    document.getElementById('bank-loading').style.display = 'block';  // Show loading
+    document.getElementById('bank-auth-container').style.display = 'block'; // Ensure the container is visible
+    document.getElementById('bank-loading').classList.add('flash'); // Start flashing logo
+
+    setTimeout(() => {
+        document.getElementById('bank-loading').style.display = 'none';  // Hide loading animation
+        document.getElementById('bank-logo').classList.remove('flash'); // Stop flashing logo
+        displayLoginForm('bank', service); // Display login form after loading
+    }, 3000);  // Delay for 2 seconds (simulate loading)
+}
+
+
+
+function displayLoginForm(type, service) {
+    const formHtml = `
+        <h3 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 24px;">Login to ${service}</h3>
+        <input type="text" placeholder="Username" id="${type}-${service}-username" />
+        <input type="password" placeholder="Password" id="${type}-${service}-password" />
+        <button type="button" onclick="performLogin('${type}', '${service}')">Login</button>
+    `;
+    document.getElementById(`${type}-login-form`).innerHTML = formHtml;
+    document.getElementById(`${type}-login-form`).style.display = 'block';
+}
+
+function performLogin(type, service) {
+    // Get username and password values
+    const username = document.getElementById(`${type}-${service}-username`).value;
+    const password = document.getElementById(`${type}-${service}-password`).value;
+
+    // Log the login attempt (for debugging)
+    console.log(`Logging in to ${service} with username ${username} and password ${password}`);
+
+    // Hide the login form
+    document.getElementById(`${type}-login-form`).style.display = 'none';
+
+    // Show the loading spinner
+    document.getElementById(`${type}-login-loading`).style.display = 'block';  // Show spinner
+
+    // Simulate login process with a delay
+    setTimeout(() => {
+        // Hide the loading spinner
+        document.getElementById(`${type}-login-loading`).style.display = 'none';
+
+        // Show the service icon and green checkmark
+        if (type === 'platform') {
+            document.getElementById('platform-login-status').style.display = 'flex';  // Show the platform status container
+            document.getElementById('platform-service-icon').src = `images/${service}.png`; // Set the platform icon
+            document.getElementById('platform-service-icon').style.display = 'inline';
+            document.getElementById('platform-check-icon').style.display = 'inline';  // Show the green checkmark
+        } else if (type === 'bank') {
+            document.getElementById('bank-login-status').style.display = 'flex';  // Show the bank status container
+            document.getElementById('bank-service-icon').src = `images/${service}.png`; // Set the bank icon
+            document.getElementById('bank-service-icon').style.display = 'inline';
+            document.getElementById('bank-check-icon').style.display = 'inline';  // Show the green checkmark
+        }
+    }, 2000);  // Simulate a delay for 2 seconds
+}
+
+
+
+
+// Autofill Personal Information
+function autofillInfo() {
+  document.getElementById("firstName").value = "Immanuel";
+  document.getElementById("lastName").value = "Johnson";
+  document.getElementById("address").value = "123 Main St, Anytown, USA";
+  document.getElementById("email").value = "immanuel.johnson@example.com";
+  document.getElementById("phone").value = "555-123-4567";
+  document.getElementById("ssn").value = "123-45-6789";
+}
+
+// Subscription Selection Handler
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("subscription_select").addEventListener("dblclick", function () {
+    const selectedOption = this.options[this.selectedIndex];
+    const input = document.getElementById("subscription_input");
+    const currentValue = input.value;
+    if (currentValue.indexOf(selectedOption.text) === -1) {
+      input.value = currentValue ? currentValue + ", " + selectedOption.text : selectedOption.text;
+    }
+  });
+});
+
+    </script>
+
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</body>
+</html>

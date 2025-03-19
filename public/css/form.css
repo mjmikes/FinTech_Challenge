@@ -4,64 +4,62 @@ body {
     margin: 0;
     padding: 0px;
     color: #333;
-    background-image: url('/images/pnc_background.jpeg'); /* Path to your image in the images folder */
-    background-size: cover; /* Makes sure the image covers the entire screen */
-    background-position: center center; /* Centers the image in the viewport */
-    background-attachment: fixed; /* Keeps the background fixed when scrolling */
-    background-repeat: no-repeat; /* Prevents repeating the image */
+    background-image: url('/images/pnc_background.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 .name-fields {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
-    gap: 20px; /* Adjusts spacing between each field */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     justify-content: center;
-    max-width: 600px; /* Ensures the form doesn't stretch too much */
-    margin: 0 auto; /* Centers the grid */
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .name-group {
     display: flex;
-    flex-direction: column; /* Stacks label above input */
+    flex-direction: column;
     text-align: center;
 }
 
 .name-group label {
     font-weight: 150;
-    margin-bottom: 5px; /* Adds spacing between label and input */
+    margin-bottom: 5px;
 }
 
 .name-group input {
-    width: 150px; /* Adjust input width */
+    width: 150px;
     padding: 5px;
     text-align: center;
 }
 
-
 header {
     display: flex;
-    justify-content: space-between;  
-    align-items: center;  
+    justify-content: space-between;
+    align-items: center;
     padding: 0px 10px;
     background-color: #333;
     color: white;
     height: 120px;
     width: 100%;
-    overflow: visible;  
+    overflow: visible;
     margin-bottom: 50px;
 }
 
-
 .logo {
-    flex-shrink: 0; /* Prevents the logo from resizing due to flex container constraints */
-    height: 100%; /* Sets logo container to full height of the header */
+    flex-shrink: 0;
+    height: 100%;
     display: flex;
-    align-items: center; /* Centers the logo vertically */
+    align-items: center;
 }
 
 .logo img {
-    height: 300px; /* Adjusts height automatically */
-    width: auto; /* Adjusts width to maintain aspect ratio */
+    height: 300px;
+    width: auto;
     margin-top: 40px;
 }
 
@@ -84,78 +82,71 @@ header nav ul li a {
     font-weight: bold;
 }
 
-
 .button {
     display: inline-block;
-    padding: 8px 16px; /* Original padding */
-    text-decoration: none; /* Remove underline */
-    color: white; /* Text color */
-    background-color: #0056b3; /* Background color */
-    border-radius: 5px; /* Rounded corners */
+    padding: 8px 16px;
+    text-decoration: none;
+    color: white;
+    background-color: #0056b3;
+    border-radius: 5px;
     font-weight: 80;
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
-    z-index: 10;
-    transition: transform 0.3s ease, background-color 0.3s ease;  /* Smooth transition for transform and background color */
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .button:hover {
-    transform: scale(1.05);  /* Slightly enlarges the button */
+    transform: scale(1.05);
 }
 
 .button:active {
-    background-color: #333;  /* Darker shade for the click effect */
+    background-color: #333;
 }
 
-
- /* Form Container */
 .form-container {
     max-width: 900px;
-    width: 100%; /* Ensure it uses full width up to the max */
+    width: 100%;
     padding: 30px;
     background-color: #f4f4f4;
     border-radius: 8px;
     font-size: 1rem;
     justify-content: center;
     align-items: center;
-    margin: 0 auto; /* Centers the form container horizontally */
+    margin: 0 auto;
 }
 
-  .form-container h2 {
-      font-size: 2rem;
-      color: #333;
-      margin-bottom: 20px;
-  }
+.form-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
 
-  /* Input/Label Styling */
-  .form-container label {
-      display: block;
-      margin: 12px 0 5px;
-      font-weight: bold;
-      color: #555;
-  }
+.form-container label {
+    display: block;
+    margin: 12px 0 5px;
+    font-weight: bold;
+    color: #555;
+}
 
-  .form-container input, 
-  .form-container textarea, 
-  .form-container select {
-      width: 97%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
-      margin-bottom: 20px;
-      background-color: #f9f9f9;
-  }
+.form-container input, 
+.form-container textarea, 
+.form-container select {
+    width: 97%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
 
-  .form-container textarea {
-      height: 150px;
-      resize: vertical;
-  }
+.form-container textarea {
+    height: 150px;
+    resize: vertical;
+}
 
-  .form-container select {
-      padding: 12px 10px;
-  }
+.form-container select {
+    padding: 12px 10px;
+}
 
-  /* Button Styling */
 .form-container button {
     background-color: #0056b3;
     color: white;
@@ -173,7 +164,6 @@ header nav ul li a {
     background-color: #0056b3;
 }
 
-/*Footer */
 footer {
     background-color: #333;
     color: white;
@@ -195,7 +185,7 @@ footer {
 }
 
 .footer-section h3 {
-    color: #FFA500; /* PNC Orange */
+    color: #FFA500;
 }
 
 .footer-section ul {
@@ -228,8 +218,6 @@ footer {
     padding-top: 10px;
 }
 
-/*Uber & Doordash buttons*/
-
 .button-container {
     display: flex;
     justify-content: center;
@@ -249,7 +237,7 @@ footer {
 }
 
 .image-button img {
-    width: 150px; /* Adjust as needed */
+    width: 150px;
     height: auto;
     border-radius: 8px;
     transition: transform 0.2s ease;
@@ -258,3 +246,131 @@ footer {
 .image-button img:hover {
     transform: scale(1.1);
 }
+
+/* Personal Information Columns */
+.personal-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.personal-info .column {
+    flex: 1;
+    padding: 0 10px;  /* Adds padding between columns */
+}
+
+/* Input and Label Styling */
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%;  /* Ensures input fields fill the column width */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+.selections-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.selections-container select {
+    height: 40px; /* Example height */
+    line-height: 40px; /* Aligns text vertically */
+    padding: 8px 12px; /* Consistent padding */
+    box-sizing: border-box; /* Includes padding and border in the element's height */
+}
+
+.selection-column {
+    flex: 1;
+    margin-right: 20px; /* Adds spacing between the columns */
+}
+
+/* Last child doesn't need right margin */
+.selection-column:last-child {
+    margin-right: 0;
+}
+
+.loading-bar img {
+    width: 50px;
+    display: block;
+    margin: 10px auto;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #0056b3;
+    width: 0;
+    transition: width 2s ease-in-out;
+}
+#platform-loading, #bank-loading {
+    display: none; /* Hide the loading indicator initially */
+    text-align: center;
+}
+
+#platform-loading img, #bank-loading img {
+    width: 100px;
+    height: auto;
+    margin-top: 20px;
+    transform: transform 0.3s ease;
+}
+
+
+.loading-dots {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50px;
+    margin: 10px auto;
+}
+
+.loading-dots div {
+    width: 8px;
+    height: 8px;
+    background-color: #333;
+    border-radius: 50%;
+    animation: bounce 0.8s infinite alternate;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3; /* Light gray background */
+    border-top: 4px solid #3498db; /* Blue spinning part */
+    border-radius: 50%;
+    width: 50px;  /* Size of the spinner */
+    height: 50px; /* Size of the spinner */
+    animation: spin 2s linear infinite; /* Infinite spinning animation */
+}
+
+/* Keyframe animation for spinning */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+@keyframes bounce {
+    to {
+        transform: scale(1.5);
+    }
+}
+
+@keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0.2; }
+    100% { opacity: 1; }
+}
+
+.flash {
+    animation: flash 2s infinite; /* Makes it flash every 1 second */
+}
+
+
+
