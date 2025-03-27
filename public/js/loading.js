@@ -38,7 +38,7 @@ setTimeout(function () {
 
   // First stage: DoorDash API (Simulating the first 33% of the total progress)
   startProgressBarForStage(
-    "Analyzing data from DoorDash...",
+    "Gathering data from Chase Bank...",
     0,
     33,
     stageDuration
@@ -47,7 +47,7 @@ setTimeout(function () {
   // Second stage: Chase API (Simulating the next 33% of the total progress)
   setTimeout(() => {
     startProgressBarForStage(
-      "Gathering data from Chase Bank...",
+      "Analyzing data from DoorDash...",
       33,
       66,
       stageDuration

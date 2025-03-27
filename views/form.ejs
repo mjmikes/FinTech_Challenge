@@ -56,37 +56,6 @@
         </div>
 
             <div class="selections-container">
-    <!-- Platform Selection Column -->
-    <div class="selection-column">
-        <label for="platform-choice">Select Your Platform:</label>
-        <select id="platform-choice" onchange="handlePlatformSelection(this.value)">
-            <option value="">Choose Platform</option>
-            <option value="door_dash">Door Dash</option>
-            <option value="fiverr">Fiverr</option>
-            <option value="uber">Uber</option>
-            <option value="uber_eats">Uber Eats</option>
-            <option value="upwork">Upwork</option>
-        </select>
-
-        <!-- Div for Platform Login Form -->
-        <!-- Div for Platform Login Form and Loading Indicators -->
-        <div id="platform-auth-container">
-            <img id="platform-logo" src="" alt="Platform Logo" style="display: none; max-width: 100px;">
-            <div id="platform-loading" style="display: none;">
-                <img src="images/doordash.png" alt="Loading">
-            </div>
-            <div id="platform-login-form" style="display: none;"></div>
-            <!-- Spinner (Initially hidden) -->
-    <div id="platform-login-loading" style="display: none;">
-        <div class="spinner"></div> <!-- CSS Spinner -->
-    </div>
-    <div id="platform-login-status" style="display: none; display: flex; justify-content: center; align-items: center; gap: 10px;">
-    <img id="platform-service-icon" src="" alt="Platform Icon" style="display: none; width: 20%; align-self: center; height: auto; margin-right: -10px;">
-    <img id="platform-check-icon" src="images/check-icon.png" alt="Success" style="width: 10%; height: auto; display: none;">
-</div>
-
-        </div>
-    </div>
 
     <!-- Bank Selection Column -->
     <div class="selection-column">
@@ -132,9 +101,40 @@
         <div class="spinner"></div> <!-- CSS Spinner -->
     </div>
     <div id="bank-login-status" style="display: none; display: flex; justify-content: center; align-items: center; gap: 10px;">
-    <img id="bank-service-icon" src="" alt="Bank Icon" style="display: none; margin-top: -15px; width: 20%; height: auto; margin-right: -10px;">
+    <img id="bank-service-icon" src="" alt="Bank Icon" style="display: none; margin-top: -15px; width: 10%; height: auto; margin-right: -10px;">
     <img id="bank-check-icon" src="images/check-icon.png" alt="Success" style="margin-top: -15px;width: 10%; height: auto; display: none;">
 </div>
+<!-- Platform Selection Column -->
+    <div class="selection-column">
+        <label for="platform-choice">Select Your Gig-Economy Platform:</label>
+        <select id="platform-choice" onchange="handlePlatformSelection(this.value)">
+            <option value="">Choose Platform</option>
+            <option value="door_dash">Door Dash</option>
+            <option value="fiverr">Fiverr</option>
+            <option value="uber">Uber</option>
+            <option value="uber_eats">Uber Eats</option>
+            <option value="upwork">Upwork</option>
+        </select>
+
+        <!-- Div for Platform Login Form -->
+        <!-- Div for Platform Login Form and Loading Indicators -->
+        <div id="platform-auth-container">
+            <img id="platform-logo" src="" alt="Platform Logo" style="display: none; max-width: 100px;">
+            <div id="platform-loading" style="display: none;">
+                <img src="images/doordash.png" alt="Loading">
+            </div>
+            <div id="platform-login-form" style="display: none;"></div>
+            <!-- Spinner (Initially hidden) -->
+    <div id="platform-login-loading" style="display: none;">
+        <div class="spinner"></div> <!-- CSS Spinner -->
+    </div>
+    <div id="platform-login-status" style="display: none; display: flex; justify-content: center; align-items: center; gap: 10px;">
+    <img id="platform-service-icon" src="" alt="Platform Icon" style="display: none; width: 10%; align-self: center; height: auto; margin-right: -10px;">
+    <img id="platform-check-icon" src="images/check-icon.png" alt="Success" style="width: 10%; height: auto; display: none;">
+</div>
+
+        </div>
+    </div>
 
             
         </div>
@@ -143,7 +143,7 @@
 
 
             <label for="subscription_input" style="font-weight: 150;">Please list all subscriptions (select from the list below):</label>
-            <input type="text" id="subscription_input" name="subscription_input" placeholder="Selected subscriptions..." readonly style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+            <input type="text" id="subscription_input" name="subscription_input" placeholder="Selected subscriptions..." readonly style="width: 98.6%; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
 
             <select id="subscription_select" style="width: 100%; height: 150px; padding: 5px; border: 1px solid #ccc; border-radius: 4px;" size="5">
                 <option value="adobe_creative_cloud">Adobe Creative Cloud</option>
@@ -215,11 +215,19 @@
 
             <br>
 
-            <a href="/loading" style="text-decoration: none;">
-    <button type="button" style="background-color: #0056b3; color: white; padding: 10px 15px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; display: block; margin: 0 auto 20px; text-align: center; transition: background-color 0.3s ease;">
+<!-- Checkbox to confirm terms and conditions -->
+<div style="display: flex; align-items: center; justify-content: flex-start; margin-top: 20px;">
+    <input type="checkbox" id="termsCheckbox" style="margin-right: -550px;">
+    <label for="termsCheckbox" style="font-size: 14px; padding-top: 20px; padding-bottom: 10px; color: #555;">I agree to the terms and conditions</label>
+</div>
+
+<!-- "Get Your ReliaRate" button that gets enabled only when checkbox is checked -->
+<a href="/loading" style="text-decoration: none;">
+    <button type="button" id="reliaRateBtn" style="background-color: #0056b3; color: white; padding: 10px 15px; border: none; border-radius: 5px; font-size: 16px; cursor: not-allowed; display: block; margin: 0 auto 20px; text-align: center; transition: background-color 0.3s ease;" disabled>
         Get Your ReliaRate
     </button>
 </a>
+
 
 <style>
     button:hover {
@@ -362,6 +370,21 @@ document.addEventListener("DOMContentLoaded", function () {
       input.value = currentValue ? currentValue + ", " + selectedOption.text : selectedOption.text;
     }
   });
+});
+
+// Get the checkbox and the button elements
+const checkbox = document.getElementById('termsCheckbox');
+const button = document.getElementById('reliaRateBtn');
+
+// Add an event listener to enable the button when the checkbox is checked
+checkbox.addEventListener('change', function() {
+    if (checkbox.checked) {
+        button.disabled = false;  // Enable the button
+        button.style.cursor = 'pointer';  // Change cursor to pointer
+    } else {
+        button.disabled = true;  // Disable the button
+        button.style.cursor = 'not-allowed';  // Change cursor to not-allowed
+    }
 });
 
     </script>
